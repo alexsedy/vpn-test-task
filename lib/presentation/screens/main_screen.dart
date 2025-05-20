@@ -53,12 +53,6 @@ class MainScreen extends GetView<MainController> {
         isSelected
             ? Theme.of(context).colorScheme.primary
             : Theme.of(context).colorScheme.primary.withValues(alpha: 0.5);
-    final textColor =
-        isSelected
-            ? Theme.of(context).colorScheme.inverseSurface
-            : Theme.of(
-              context,
-            ).colorScheme.inverseSurface.withValues(alpha: 0.5);
 
     return SizedBox(
       height: 50,

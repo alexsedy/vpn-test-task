@@ -6,13 +6,12 @@ import 'package:vpn_test_task/controllers/servers_controller.dart';
 import 'package:vpn_test_task/core/utils/app_assets.dart';
 
 class ConnectivityScreen extends GetView<ConnectivityController> {
-  ConnectivityScreen({super.key});
-
-  final ServersController serversController = Get.find<ServersController>();
+  const ConnectivityScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("NAME VPN", style: textTheme.headlineMedium,),
@@ -24,7 +23,7 @@ class ConnectivityScreen extends GetView<ConnectivityController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(() {
-              final server = serversController.selectedServer.value;
+              final server = controller.getSelectedServer();
               if(server != null) {
                 return Container(
                   decoration: BoxDecoration(

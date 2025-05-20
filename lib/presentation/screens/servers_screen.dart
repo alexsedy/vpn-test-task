@@ -8,12 +8,8 @@ class ServersScreen extends GetView<ServersController> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
-      appBar: AppBar(
-      ),
+      appBar: AppBar(),
       body: Obx(() {
         return ListView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -23,17 +19,19 @@ class ServersScreen extends GetView<ServersController> {
               controller: controller.searchTextController,
               decoration: InputDecoration(
                 hintText: "Servers",
-                hintStyle: textTheme.headlineSmall,
+                hintStyle: Theme.of(context).textTheme.headlineSmall,
                 suffixIcon: Icon(Icons.search),
               ),
-              style: textTheme.titleMedium?.copyWith(color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? colorScheme.onSurface),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
               onChanged: (value) => controller.updateSearchQuery(value),
             ),
-            SizedBox(height: 10.0,),
+            SizedBox(height: 10.0),
             if (controller.unlockedServers.isNotEmpty)
-              _ServersSectionWidget("UNLOCKED", controller.unlockedServers,),
+              _ServersSectionWidget("UNLOCKED", controller.unlockedServers),
             if (controller.lockedServers.isNotEmpty)
-              _ServersSectionWidget("LOCKED", controller.lockedServers,),
+              _ServersSectionWidget("LOCKED", controller.lockedServers),
           ],
         );
       }),
@@ -44,6 +42,7 @@ class ServersScreen extends GetView<ServersController> {
 class _ServersSectionWidget extends GetView<ServersController> {
   final String title;
   final List<ServerModel> servers;
+
   const _ServersSectionWidget(this.title, this.servers, {super.key});
 
   @override
@@ -53,10 +52,7 @@ class _ServersSectionWidget extends GetView<ServersController> {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          child: Text(title, style: Theme.of(context).textTheme.titleMedium),
         ),
         ListView.builder(
           shrinkWrap: true,
@@ -64,8 +60,9 @@ class _ServersSectionWidget extends GetView<ServersController> {
           itemCount: servers.length,
           itemBuilder: (context, index) {
             final server = servers[index];
-            return Obx((){
-              final bool isSelected = controller.selectedServer.value?.id == server.id;
+            return Obx(() {
+              final bool isSelected =
+                  controller.selectedServer.value?.id == server.id;
 
               Color borderColor;
               if (isSelected && !server.isPremium) {
@@ -91,7 +88,14 @@ class _ServersSectionWidget extends GetView<ServersController> {
                       server.flagAsset,
                       width: 40,
                       height: 40,
-                      errorBuilder: (context, error, stackTrace) => Icon(Icons.flag_circle_outlined, size: 40, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),),
+                      errorBuilder:
+                          (context, error, stackTrace) => Icon(
+                            Icons.flag_circle_outlined,
+                            size: 40,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withValues(alpha: 0.7),
+                          ),
                     ),
                   ),
                   title: Text(

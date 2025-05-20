@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:get/get.dart';
 import 'package:vpn_test_task/controllers/main_controller.dart';
 import 'package:vpn_test_task/controllers/servers_controller.dart';
+import 'package:vpn_test_task/data/models/server_model.dart';
 
 enum ConnectionStatus {
   disconnected,
@@ -13,6 +14,8 @@ enum ConnectionStatus {
 
 class ConnectivityController extends GetxController {
   final MainController _mainController = Get.find<MainController>();
+  final ServersController _serversController = Get.find<ServersController>();
+
   final Rx<ConnectionStatus> connectionState = ConnectionStatus.disconnected.obs;
   final RxString statusText = "Not connected".obs;
   final RxString connectingTime = "00:00:00".obs;
@@ -26,7 +29,9 @@ class ConnectivityController extends GetxController {
   Timer? _speedSimulationTimer;
   final Random _random = Random();
 
-  final ServersController serversController = Get.find<ServersController>();
+  ServerModel? getSelectedServer() {
+    return _serversController.selectedServer.value;
+  }
 
   void toggleConnection() {
     if (connectionState.value == ConnectionStatus.connected) {
