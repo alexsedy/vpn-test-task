@@ -9,10 +9,10 @@ class MainController extends GetxController {
   final RxInt selectedIndex = 0.obs;
 
   final List<Widget> screens = [
-    ConnectivityScreen(),
-    NotificationScreen(),
-    ServersScreen(),
-    SettingsScreen(),
+    const ConnectivityScreen(),
+    const NotificationScreen(),
+    const ServersScreen(),
+    const SettingsScreen(),
   ];
 
   void changeTabIndex(int index) {
