@@ -12,6 +12,7 @@ class MainBinding extends Bindings {
     Get.lazyPut<ConnectivityController>(() => ConnectivityController());
     Get.lazyPut<ServersController>(() => ServersController());
     Get.lazyPut<SettingsController>(() => SettingsController());
+    //todo remove the binding
     Get.lazyPut<OnboardingController>(() => OnboardingController());
   }
 }
