@@ -23,15 +23,15 @@ class ConnectivityController extends GetxController {
   final RxString downloadSpeed = "0.0 Mbps".obs;
   final RxString uploadSpeed = "0.0 Mbps".obs;
 
+  ServerModel? get selectedServer {
+    return _serversController.selectedServer.value;
+  }
+
   Timer? _timer;
   int _secondsElapsed = 0;
 
   Timer? _speedSimulationTimer;
   final Random _random = Random();
-
-  ServerModel? getSelectedServer() {
-    return _serversController.selectedServer.value;
-  }
 
   void toggleConnection() {
     if (connectionState.value == ConnectionStatus.connected) {

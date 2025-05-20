@@ -22,7 +22,7 @@ class ConnectivityScreen extends GetView<ConnectivityController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(() {
-              final server = controller.getSelectedServer();
+              final server = controller.selectedServer;
               if(server != null) {
                 return Container(
                   decoration: BoxDecoration(
