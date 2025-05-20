@@ -43,7 +43,7 @@ class _ServersSectionWidget extends GetView<ServersController> {
   final String title;
   final List<ServerModel> servers;
 
-  const _ServersSectionWidget(this.title, this.servers, {super.key});
+  const _ServersSectionWidget(this.title, this.servers);
 
   @override
   Widget build(BuildContext context) {

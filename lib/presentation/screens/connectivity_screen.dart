@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vpn_test_task/controllers/connectivity_controller.dart';
-import 'package:vpn_test_task/controllers/servers_controller.dart';
 import 'package:vpn_test_task/core/utils/app_assets.dart';
 
 class ConnectivityScreen extends GetView<ConnectivityController> {
@@ -101,7 +100,7 @@ class ConnectivityScreen extends GetView<ConnectivityController> {
 }
 
 class _ConnectionButtonWidget extends GetView<ConnectivityController> {
-  const _ConnectionButtonWidget({super.key});
+  const _ConnectionButtonWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +140,7 @@ class _ConnectionButtonWidget extends GetView<ConnectivityController> {
 }
 
 class _SpeedInfoWidget extends GetView<ConnectivityController> {
-  const _SpeedInfoWidget({super.key});
+  const _SpeedInfoWidget();
 
   Widget _speedIndicator(BuildContext context, String iconAsset, String speed, String label, TextTheme textTheme, ColorScheme colorScheme) {
     return Column(
@@ -177,7 +176,7 @@ class _SpeedInfoWidget extends GetView<ConnectivityController> {
                 textTheme,
                 colorScheme,
               ),
-              Container(height: 50, width: 1, color: colorScheme.outlineVariant.withOpacity(0.5)),
+              Container(height: 50, width: 1, color: colorScheme.outlineVariant.withValues(alpha: 0.5)),
               _speedIndicator(
                 context,
                 AppAssets.uploadIcon,

@@ -84,7 +84,6 @@ class _SettingItemWithSwitch extends StatelessWidget {
   final ValueChanged<bool> onChanged;
 
   const _SettingItemWithSwitch({
-    super.key,
     required this.iconAsset,
     required this.title,
     this.subtitle,
@@ -121,7 +120,6 @@ class _SettingItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const _SettingItem({
-    super.key,
     required this.iconAsset,
     required this.title,
     required this.onTap});
@@ -164,7 +162,6 @@ class _SettingItemWithTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const _SettingItemWithTile({
-    super.key,
     required this.iconAsset,
     required this.title,
     required this.onTap});
